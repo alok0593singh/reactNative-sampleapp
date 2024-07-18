@@ -15,7 +15,16 @@ variables:
   ANDROID_HOME: '/Users/mayanksharma/Library/Android/sdk/'
 
 
+
 steps:
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo installing dependencies.....     
+      npm install
+
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
