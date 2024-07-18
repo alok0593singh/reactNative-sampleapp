@@ -45,7 +45,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy file to Artifact Staging Directory'
   inputs:
-    SourceFolder: 'app/build/outputs/apk/release/'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/app/build/outputs/apk/release/'
     Contents: '**.apk'
     TargetFolder: '$(Build.artifactStagingDirectory)'
     OverWrite: true
