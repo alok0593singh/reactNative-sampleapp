@@ -25,18 +25,18 @@ steps:
       echo installing dependencies.....     
       npm install
 
-- task: CmdLine@2
-  displayName: Gradle build
-  inputs:
-    script: |
-      cd android/
-      ./gradlew clean assembleDebu
-
-# - task: Gradle@2
+# - task: CmdLine@2
+#   displayName: Gradle build
 #   inputs:
-#     workingDirectory: ''
-#     gradleWrapperFile: 'android/gradlew'
-#     gradleOptions: '-Xmx3072m'
-#     publishJUnitResults: false
-#     testResultsFiles: '**/TEST-*.xml'
-#     tasks: 'assembleDebug'
+#     script: |
+#       cd android/
+#       ./gradlew clean assembleDebu
+
+- task: Gradle@2
+  inputs:
+    workingDirectory: '$(System.DefaultWorkingDirectory)/android'
+    gradleWrapperFile: 'android/gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
