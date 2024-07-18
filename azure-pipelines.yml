@@ -40,3 +40,25 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'clean assembleDebug'
+
+
+- task: CopyFiles@2
+  displayName: 'Copy file to Artifact Staging Directory'
+  inputs:
+    SourceFolder: 'app/build/outputs/apk/release/'
+    Contents: '**.apk'
+    TargetFolder: '$(Build.artifactStagingDirectory)'
+    OverWrite: true
+    retryCount: '5'
+
+
+
+
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'app center'
+    appSlug: 'wasanmohit/sample_andorid'
+    appFile: '/Users/mayanksharma/Downloads/testagent/_work/3/a/app-release-unsigned.apk'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'test'
+    destinationType: 'groups'
