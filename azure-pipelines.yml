@@ -49,11 +49,20 @@ steps:
 #     packageApp: true
 #     workingDirectory: '$(System.DefaultWorkingDirectory)/ios'
 
+# - task: Xcode@5
+#   inputs:
+#     actions: 'build'
+#     xcWorkspacePath: 'ios/*.xcworkspace'
+#     packageApp: true
+
+
 - task: Xcode@5
   inputs:
     actions: 'build'
+    configuration: 'Release'
     xcWorkspacePath: 'ios/*.xcworkspace'
     packageApp: true
+
 
 # - task: CopyFiles@2
 #   displayName: 'Copy file to Artifact Staging Directory'
