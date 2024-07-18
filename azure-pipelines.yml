@@ -13,6 +13,7 @@ pool:
 variables:
   # JAVA_HOME: '/usr/lib/jvm/zulu-8-azure-amd64'  # Adjust Java version and path as needed
   ANDROID_HOME: '/Users/mayanksharma/Library/Android/sdk/'
+  SDK: '/Users/mayanksharma/Library/Android/sdk'
 
 
 
@@ -42,23 +43,29 @@ steps:
     tasks: 'clean assembleDebug'
 
 
-- task: CopyFiles@2
-  displayName: 'Copy file to Artifact Staging Directory'
+- task: Xcode@5
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/app/build/outputs/apk/release/'
-    Contents: '**.apk'
-    TargetFolder: '$(Build.artifactStagingDirectory)'
-    OverWrite: true
-    retryCount: '5'
+    actions: 'build'
+    packageApp: true
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ios'
+
+# - task: CopyFiles@2
+#   displayName: 'Copy file to Artifact Staging Directory'
+#   inputs:
+#     SourceFolder: '$(System.DefaultWorkingDirectory)/app/build/outputs/apk/release/'
+#     Contents: '**.apk'
+#     TargetFolder: '$(Build.artifactStagingDirectory)'
+#     OverWrite: true
+#     retryCount: '5'
 
 
 
 
-- task: AppCenterDistribute@3
-  inputs:
-    serverEndpoint: 'app center'
-    appSlug: 'wasanmohit/sample_andorid'
-    appFile: '/Users/mayanksharma/Downloads/testagent/_work/3/a/app-release-unsigned.apk'
-    releaseNotesOption: 'input'
-    releaseNotesInput: 'test'
-    destinationType: 'groups'
+# - task: AppCenterDistribute@3
+#   inputs:
+#     serverEndpoint: 'app center'
+#     appSlug: 'wasanmohit/sample_andorid'
+#     appFile: '/Users/mayanksharma/Downloads/testagent/_work/3/a/app-release-unsigned.apk'
+#     releaseNotesOption: 'input'
+#     releaseNotesInput: 'test'
+#     destinationType: 'groups'
