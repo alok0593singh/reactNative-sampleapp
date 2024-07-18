@@ -52,7 +52,7 @@ steps:
 - task: Xcode@5
   inputs:
     actions: 'build'
-    xcWorkspacePath: 'ios/*.xcodeproj/project.xcworkspace'
+    xcWorkspacePath: 'ios/*.xcworkspace'
     packageApp: true
 
 # - task: CopyFiles@2
