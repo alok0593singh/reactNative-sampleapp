@@ -43,11 +43,17 @@ steps:
     tasks: 'clean assembleDebug'
 
 
+# - task: Xcode@5
+#   inputs:
+#     actions: 'build'
+#     packageApp: true
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/ios'
+
 - task: Xcode@5
   inputs:
     actions: 'build'
+    xcWorkspacePath: 'ios/*.xcodeproj/project.xcworkspace'
     packageApp: true
-    workingDirectory: '$(System.DefaultWorkingDirectory)/ios'
 
 # - task: CopyFiles@2
 #   displayName: 'Copy file to Artifact Staging Directory'
