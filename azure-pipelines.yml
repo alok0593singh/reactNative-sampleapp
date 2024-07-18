@@ -1,0 +1,26 @@
+# Android
+# Build your Android project with Gradle.
+# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+trigger:
+- main
+
+pool:
+  name: demo
+  demands: java
+
+variables:
+  # JAVA_HOME: '/usr/lib/jvm/zulu-8-azure-amd64'  # Adjust Java version and path as needed
+  ANDROID_HOME: '/Users/mayanksharma/Library/Android/sdk/'
+
+
+steps:
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'android/gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
