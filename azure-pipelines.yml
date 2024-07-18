@@ -13,7 +13,7 @@ pool:
 variables:
   # JAVA_HOME: '/usr/lib/jvm/zulu-8-azure-amd64'  # Adjust Java version and path as needed
   ANDROID_HOME: '/Users/mayanksharma/Library/Android/sdk/'
-  SDK: '/Users/mayanksharma/Library/Android/sdk'
+  SDK: '/Users/mayanksharma/Library/Android/'
 
 
 
