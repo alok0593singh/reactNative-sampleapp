@@ -19,17 +19,24 @@ variables:
 steps:
 
 - task: CmdLine@2
+  displayName: Installing dependencies
   inputs:
     script: |
       echo installing dependencies.....     
       npm install
 
-
-- task: Gradle@2
+- task: CmdLine@2
+  displayName: Gradle build
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'android/gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+    script: |
+      cd android/
+      ./gradlew assembleDebu
+
+# - task: Gradle@2
+#   inputs:
+#     workingDirectory: ''
+#     gradleWrapperFile: 'android/gradlew'
+#     gradleOptions: '-Xmx3072m'
+#     publishJUnitResults: false
+#     testResultsFiles: '**/TEST-*.xml'
+#     tasks: 'assembleDebug'
