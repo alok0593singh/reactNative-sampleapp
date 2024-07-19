@@ -23,7 +23,8 @@ steps:
   displayName: Installing dependencies
   inputs:
     script: |
-      echo installing dependencies.....     
+      echo installing dependencies.....   
+      sudo xcode-select --switch /Applications/Xcode.app  
       npm install
 
 # - task: CmdLine@2
